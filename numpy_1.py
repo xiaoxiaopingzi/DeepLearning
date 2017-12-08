@@ -56,7 +56,7 @@ print("矩阵的最大值为：%d" % matrix.max())
 
 print("对矩阵按行求和：")
 print(matrix)
-print(matrix.sum(axis=1))
+print(matrix.sum(axis=1))  # 对矩阵按行求和
 print(matrix.sum(axis=0))  # 对矩阵按列求和
 
 # 矩阵的一些属性
