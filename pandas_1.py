@@ -48,3 +48,14 @@ for c in col_name:
         gram_columns.append(c)
 gram_df = death_valley_2014[gram_columns]
 print(gram_df.head(4))
+
+# 取出某一列的最大值
+print(death_valley_2014["Max TemperatureF"].max())
+
+# 按照某一列进行从小到大排序，inplace=True表示用排序好的矩阵替换原来的矩阵，输出排序好的值
+death_valley_2014.sort_values("Max TemperatureF", inplace=True)
+print(death_valley_2014["Max TemperatureF"])
+
+# 降序(从大到小)排列
+death_valley_2014.sort_values("Max TemperatureF", inplace=True, ascending=False)
+print(death_valley_2014["Max TemperatureF"])
