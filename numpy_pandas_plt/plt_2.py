@@ -2,7 +2,8 @@
 """
 @author: WanZhiWen 
 @file: plt_2.py 
-@time: 2017-12-13 15:19  
+@time: 2017-12-13 15:19
+子图的相关操作
 """
 import matplotlib.pyplot as plt
 import numpy as np
