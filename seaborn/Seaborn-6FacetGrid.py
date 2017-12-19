@@ -46,10 +46,42 @@ print(tips.head())
 # g.add_legend()
 
 # 指定标记类型，^表示采用上三角形，v表示采用下三角形
-g = sns.FacetGrid(tips, hue="sex", palette="Set1",
-                  size=5, hue_kws={"marker": ["^", "v"]})
-g.map(plt.scatter, "total_bill", "tip", s=80,
-      linewidth=0.5, edgecolor="white")
+# g = sns.FacetGrid(tips, hue="sex", palette="Set1",
+#                   size=5, hue_kws={"marker": ["^", "v"]})
+# g.map(plt.scatter, "total_bill", "tip", s=80,
+#       linewidth=0.5, edgecolor="white")
+# g.add_legend()
+
+# 指定x轴标签、x轴范围、y轴范围等
+# with sns.axes_style("white"):
+#     g = sns.FacetGrid(tips, row="sex", col="smoker", margin_titles=True, size=2.5)
+# g.map(plt.scatter, "total_bill", "tip", color="#334488", edgecolor="white", lw=0.5)
+# g.set_axis_labels("Total bill (US Dollars)", "Tip")  # 设置x轴标签
+# g.set(xticks=[10, 30, 50], yticks=[2, 6, 10])  # 设置坐标轴的范围
+# g.fig.subplots_adjust(wspace=0.02, hspace=0.02)  # 对子图的位置进行调整
+# g.fig.subplots_adjust(left=0.125, right=0.9, bottom=0.1,
+#                       top=0.9, wspace=0.02, hspace=0.02)  # 对子图的位置进行调整
+
+iris = sns.load_dataset("iris")
+print(iris.head())
+
+# PairGrid()函数会画出所有特征之间的关系
+# g = sns.PairGrid(iris)
+
+# g = sns.PairGrid(iris, hue="species")  # 添加一个species用于区分不同的物种
+
+# 只采用"sepal_length"和"sepal_width"这两个特征
+# g = sns.PairGrid(iris, vars=["sepal_length", "sepal_width"], hue="species")
+
+# g.map(plt.scatter)  # 所有子图都采用散点图
+
+# g.map_diag(plt.hist)   # 位于对角线的子图采用直方图
+# g.map_offdiag(plt.scatter)   # 非对角线的子图采用散点图
+# g.add_legend()
+
+# 添加一个调色板
+g = sns.PairGrid(tips, hue="size", palette="GnBu_d")
+g.map(plt.scatter, s=50, edgecolor="white")
 g.add_legend()
 
 plt.show()
