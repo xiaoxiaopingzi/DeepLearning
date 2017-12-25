@@ -29,7 +29,7 @@ print(matrix)
 print(type(matrix))
 print(matrix.shape)  # 输出矩阵的行数和列数，即2 x 3
 print(matrix[:, 1])  # 用冒号占位符表示取所有元素，这里表示取矩阵第1列的所有元素
-print(matrix[:, 0:2])
+print(matrix[:, 0:2])  # 取矩阵第0列到第1列的所有元素(包括头不包括尾)
 
 print(vector == 10.0)  # 判断向量中的元素是否和10相等
 print(matrix == 10)
