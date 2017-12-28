@@ -2,7 +2,9 @@
 """
 @author: WanZhiWen 
 @file: xgboost.py 
-@time: 2017-12-25 22:14  
+@time: 2017-12-25 22:14
+
+xgboost集成学习方法
 """
 from numpy import loadtxt
 from xgboost import XGBClassifier
