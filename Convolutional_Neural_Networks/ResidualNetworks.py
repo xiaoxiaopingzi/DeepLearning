@@ -12,12 +12,14 @@ from keras.layers import Input, Add, Dense, Activation, ZeroPadding2D, BatchNorm
 from keras.models import Model
 from keras.initializers import glorot_uniform
 import keras.backend as K
+import os
+import time
 
 try:
     from resnets_utils import load_dataset, convert_to_one_hot
 except ImportError:
     raise ImportError('The file is not found. Please check the file name!')
-
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 K.set_image_data_format('channels_last')
 K.set_learning_phase(1)
 
@@ -227,7 +229,10 @@ print("Y_train shape: " + str(Y_train.shape))
 print("X_test shape: " + str(X_test.shape))
 print("Y_test shape: " + str(Y_test.shape))
 
-model.fit(X_train, Y_train, epochs=2, batch_size=32)
+start_time = time.time()
+model.fit(X_train, Y_train, epochs=10, batch_size=32)
+end_time = time.time()
+print("训练模型所花的时间为：%d秒" % (end_time - start_time))
 
 preds = model.evaluate(X_test, Y_test)
 print("Loss = " + str(preds[0]))

@@ -11,11 +11,14 @@ from keras.layers import Input, Dense, Activation, ZeroPadding2D, BatchNormaliza
 from keras.layers import MaxPooling2D
 from keras.models import Model
 import keras.backend as K
+import os
+import time
 try:
     from kt_utils import load_dataset
 except ImportError:
     raise ImportError('The file is not found. Please check the file name!')
 K.set_image_data_format('channels_last')
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 X_train_orig, Y_train_orig, X_test_orig, Y_test_orig, classes = load_dataset()
 
@@ -73,8 +76,14 @@ def HappyModel(input_shape):
 
 
 happyModel = HappyModel(X_train.shape[1:4])
+
 happyModel.compile(optimizer="Adam", loss="binary_crossentropy", metrics=["accuracy"])
-happyModel.fit(x=X_train, y=Y_train, epochs=40, batch_size=16)
+
+start_time = time.time()
+happyModel.fit(x=X_train, y=Y_train, epochs=40, batch_size=32)
+end_time = time.time()
+print("训练模型所花的时间为：%d秒" % (end_time - start_time))
+
 preds = happyModel.evaluate(x=X_test, y=Y_test)
 
 print()
